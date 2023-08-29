@@ -7,10 +7,10 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
-import css from "./tech/css.png";
+import css from "./tech/css.svg";
 import linux from "./tech/linux.svg";
 import git from "./tech/git.png";
-import html from "./tech/html.png";
+import html from "./tech/html.svg";
 import javascript from "./tech/javascript.png";
 import metamask from "./tech/metamask.svg";
 import nodejs from "./tech/nodejs.png";
