@@ -4,7 +4,7 @@ import {
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
 import "react-vertical-timeline-component/style.min.css";
-
+import { useState, useEffect } from "react";
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
@@ -49,12 +49,42 @@ const ExperienceCard = ({ experience }) => (
 );
 
 const Experience = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Add a listener for change to the screen size
+    const mediaQuery = window.matchMedia("(max-width:500px)");
+
+    // set the initial value of the isMobile state variable
+    setIsMobile(mediaQuery.matches);
+
+    // Define a callback function to handle changes to the media query
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    // Add the callback function as a listener for changes to the media query
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    // Remove the listener when the component is unmounted
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>What I have done so far</p>
-        <h2 className={styles.sectionHeadText}>Worked On</h2>
-      </motion.div>
+      {isMobile ? (
+        <div>
+          <p className={styles.sectionSubText}>What I have done so far</p>
+          <h2 className={styles.sectionHeadText}>Worked On</h2>
+        </div>
+      ) : (
+        <motion.div variants={textVariant()}>
+          <p className={styles.sectionSubText}>What I have done so far</p>
+          <h2 className={styles.sectionHeadText}>Worked On</h2>
+        </motion.div>
+      )}
 
       <div className="mt-20 flex flex-col">
         <VerticalTimeline>

@@ -30,9 +30,9 @@ const Tech = () => {
   return isMobile ? (
     <div className="flex flex-row flex-wrap justify-center gap-10">
       {technologies.map((technology) => (
-        <div className="w-20 h-20 border border-purple-500 rounded-full flex justify-center items-center bg-purple-300">
+        <div className="w-20 h-20 bg-white shadow-card rounded-full flex justify-center items-center">
           <img
-            width={60}
+            width={40}
             src={technology.icon}
             alt={technology.name}
             key={technology.name}
